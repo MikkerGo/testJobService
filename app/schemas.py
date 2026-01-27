@@ -6,7 +6,7 @@ class RecordOut(BaseModel):
     object_id: str | None
     work_type: str | None
     period: date | None
-    quantity: float | None
+    quantity: int | None
     unit_price: float | None
     total_cost: float | None
     contractor: str | None

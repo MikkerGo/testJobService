@@ -11,7 +11,7 @@ class Record(Base):
     object_id = Column(String)
     work_type = Column(String)
     period = Column(Date, nullable=True)
-    quantity = Column(Float, nullable=True)
+    quantity = Column(Integer, nullable=True)
     unit_price = Column(Float, nullable=True)
     total_cost = Column(Float, nullable=True)
     contractor = Column(String)

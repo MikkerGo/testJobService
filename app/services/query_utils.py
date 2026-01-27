@@ -2,7 +2,6 @@ from sqlalchemy.orm import Query
 from sqlalchemy import asc, desc
 from app.models import Record
 
-# Разрешённые поля сортировки
 SORT_FIELDS = {
     "record_id": Record.record_id,
     "object_id": Record.object_id,

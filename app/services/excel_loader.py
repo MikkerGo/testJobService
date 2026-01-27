@@ -27,10 +27,7 @@ REQUIRED_COLUMNS = [
 
 async def load_excel(file):
     df = pd.read_excel(file.file)
-    print(df.head())
-    print(df.dtypes)
 
-    # 1. Проверка структуры
     missing = set(REQUIRED_COLUMNS) - set(df.columns)
     if missing:
         raise ValueError(f"Отсутствуют колонки: {missing}")
