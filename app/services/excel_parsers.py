@@ -1,4 +1,5 @@
 import pandas as pd
+import re
 
 
 class ExcelValidationError(Exception):
@@ -36,7 +37,7 @@ def parse_int(value, field: str) -> float:
     value = require_value(value, field)
 
     if isinstance(value, str):
-        value = value.clear_string(value)
+        value = clear_string(value)
 
     try:
         return int(value)
@@ -60,3 +61,23 @@ def parse_date(value, field: str):
         raise ExcelValidationError(
             f"Поле '{field}' должно быть датой, получено: {value}"
         )
+    
+
+OBJECT_ID_PATTERN = re.compile(r"^[A-Za-z0-9_-]{3,50}$")
+
+
+def parse_object_id(value, field: str) -> str:
+    if pd.isna(value):
+        raise ExcelValidationError("Поле 'object_id' пустое")
+
+    value = str(value).strip()
+
+    if not value:
+        raise ExcelValidationError("Поле 'object_id' пустое")
+
+    if not OBJECT_ID_PATTERN.match(value):
+        raise ExcelValidationError(
+            f"Неверный формат object_id: '{value}'"
+        )
+
+    return value

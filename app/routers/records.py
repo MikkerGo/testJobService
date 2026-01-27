@@ -27,7 +27,7 @@ def get_records(
 
     # сортировка
     sort_by: str | None = Query(None, description="Поле сортировки"),
-    sort_order: str = Query("asc", regex="^(asc|desc)$"),
+    sort_order: str = Query("asc", pattern="^(asc|desc)$"),
 
     # пагинация
     limit: int = Query(50, ge=1, le=1000),
@@ -53,7 +53,7 @@ def get_records(
     )
 
     query = apply_sorting(query, sort_by, sort_order)
-    query = apply_pagination(query, limit, offset)
+    query = apply_limit_or_offset(query, limit, offset)
 
     result = query.all()
     session.close()
