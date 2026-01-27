@@ -66,13 +66,17 @@ git clone https://github.com/MikkerGo/testJobService.git
 cd testJobService
 ```
 2. Установить библиотеки
+
 При необходимости создайте виртуальное окружение
 ```bash
 pip install -r requirements.txt
 ```
 3. Создать файл .env в корне проекта
+
 Для примера используйте .env.example
+
 4. Подготовить базу данных
+
 Создайте базу 
 ```sql
 CREATE DATABASE excel_db
